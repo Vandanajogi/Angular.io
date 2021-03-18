@@ -1,0 +1,66 @@
+<div class="container-fluid" style="margin-top: 10px;">
+    <app-header></app-header>
+    <div class="center">
+        <div class="row" >
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="main-div">
+                <!-- <div style="text-align: right;"> -->
+                    
+                    <div class="card " style="width:400px" >
+                        <img class="card-img-top" src="assets/abs.jpg" alt="Card image">
+                       
+                        <div class="card-img-overlay">
+                            
+                          <h2 class="card-title" style="color: whitesmoke;" >{{empobj.name}} </h2>
+                        
+                          <div class="card-text">
+                                <label style="color: whitesmoke;">Status&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; </label>
+                                <span [ngClass]="{
+                                'badge':true,
+                                'badge-pill':true,
+                                'badge-success':empobj.status.toLowerCase()== 'active',
+                                'badge-warning':empobj.status.toLowerCase()=='inactive',
+                                'badge-danger':empobj.status.toLowerCase()=='suspend'
+                            }" style="padding: 10px;" >{{empobj.status}}</span><br> 
+                            
+                              <span style="color: whitesmoke;"> Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{empobj.phoneno}} </span>
+                              <br>
+                              
+                              <span style="color: whitesmoke;"> Department &nbsp;&nbsp;&nbsp;&nbsp;: {{empobj.department}} </span>
+                              <br>
+                             
+                              
+                              <span style="color: whitesmoke;">Created By&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :  {{empobj. createdby}} </span>
+                              <br>
+                              
+                              <span style="color: whitesmoke;">Created Date &nbsp;&nbsp;:  {{empobj. createddtm}} </span>
+                              <br>
+                              <span style="color: whitesmoke;">Updated By &nbsp;&nbsp;&nbsp;&nbsp;: {{empobj. updatedby}} </span><br>
+
+                              <span style="color: whitesmoke;">Updated Date :  {{empobj. createddtm}} </span><br>
+
+                              <span style="color: whitesmoke;">Country Name :  {{empobj.country1.cname}} </span>
+                              <br><br>
+                              
+                              
+
+                          </div>
+                          <button class="btn btn-warning stretched-link" (click)="OnUpdate(popUp)">Upadate </button>&nbsp;
+                          <button routerLink="/home" class="btn btn-primary">Home</button>
+                       
+                     </div>
+                     <ng-template #popUp>
+                        <app-updateemp [parentdata]="empobj"></app-updateemp>
+                       
+                        <button (click)="modalRef.hide()" class="btn btn-danger">Close</button> 
+                    </ng-template>
+                      </div>
+
+
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

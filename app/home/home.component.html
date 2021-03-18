@@ -1,0 +1,94 @@
+
+<div class="container-fluid">
+    <!-- <h2>{{username}}</h2> -->
+    <app-header></app-header>
+     <!-- <div class="center"> 
+    <h3 [style.color]="'magenta'" >Employee Management System </h3>
+</div> -->
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+    <h2 class="navbar-brand" style="color:white;" >Employee Mangement System</h2>
+
+</nav>  -->
+    <div class="row"  >
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div>
+        <button (click)="onAddEmployee()" class="btn btn-success">Add Employee</button>
+        <button (click)="onUpdateEmployee(popUp)" class="btn btn-warning">Update Employee</button>
+        <button  (click)="onDeleteEmployee()" class="btn btn-danger">Delete Employee</button>
+        <button (click)="onChangeStatus()" class="btn btn-primary">Change Status</button>
+   
+
+        <div class="form-group" style="float: right;margin-top: 10px;">
+            <div class="input-group-prepend">
+            <span class="input-group-text" style="font-size: 1em; ">
+                <i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search"
+                 style="width: min-content;" [(ngModel)]="nameSearch">
+        </div>
+        </div>
+   
+    </div>
+        <ng-template #popUp>
+            <app-updateemp [parentdata]="empobj"></app-updateemp>
+           
+            <button (click)="modalRef.hide()" class="btn btn-danger">Close</button> 
+        </ng-template>
+    </div>
+    </div>
+    
+    <!-- <div class="form-group" class="col-sm-12 col-md-12 col-lg-12">
+        <label for="search-text">Search Here</label>
+        <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+          [(ngModel)]="searchText" placeholder="Enter text to search" 
+          autofocus>
+      </div>
+      <br> -->
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+           <table class="table table-bordered table-hover table-dark table-striped">
+               <thead>
+                   <th>Action</th>
+                   <th>ID</th>
+                   <th>Name</th>
+                   <th>Phone No.</th>
+                   <th>Department</th>
+                   <th>Status</th>
+                   <th>Created Date</th>
+                   <th>Created By</th>
+                   <th>Updated Date</th>
+                   <th>Updated BY</th>
+                   <th>Country</th>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let item of EmpData | searchfilter:nameSearch">
+                      <td> <input type="radio" name="rddetail" (click)="onRadioClick(item)"></td>
+                      <td>{{item.id}}</td>
+                       <td> <a [routerLink]="['/EmployeeDetails',item.id]">{{item.name | uppercase}} </a></td>
+                       <td>{{item.phoneno}}</td>
+                       <td>{{item.department}}</td>
+                       <td > <h6 style="text-align: center;">
+                        <span [ngClass]="{
+                        'badge':true,
+                        'badge-pill':true,
+                        'badge-success':item.status.toLowerCase()== 'active',
+                        'badge-warning':item.status.toLowerCase()=='inactive',
+                        'badge-danger':item.status.toLowerCase()=='suspend'
+                    }" style="padding: 10px;" >{{item.status}}</span> </h6> </td>
+                        
+                       <td>{{item.createddtm|date:'mediumDate' }}</td>
+                       <td>{{item.createdby}}</td>
+                       <td>{{item.updateddtm| date:'dd-MM-yyyy'}}</td>
+                       <td>{{item.updatedby}}</td>
+                       <td>{{item.country1.cname}}</td>
+
+                   </tr>
+               </tbody>
+           </table>
+
+        </div>
+    </div>
+
+</div>

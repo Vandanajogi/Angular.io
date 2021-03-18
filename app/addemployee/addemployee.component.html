@@ -1,0 +1,165 @@
+    <div class="container-fluid">
+    <app-header></app-header>
+    <div class="center"> 
+    <h3 [style.color]="'magenta'" >ADD EMPLOYEE </h3>
+    </div>
+    <br>
+    <!-- <div  class="text-center">
+    <button routerLink="" class="btn btn-dark">Home</button>
+    </div> -->
+
+
+
+
+
+<!-- //this is done by me
+    <div class="center"> 
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <form >
+            <div class="form-group">
+                <label for="" >Name :: </label>
+                <input #inputname type="text" placeholder="Enter the Username.." class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="" >Contact :: </label>
+                <input #inputcontact type="text" placeholder="Enter the Contact number.." class="form-control">
+            </div>
+           
+                <div class="form-group">
+                    <label for="" >Department :: </label>
+                    <input #inputdepartment type="text" placeholder="Enter the Department.." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="" >Status :: </label>
+                    <input #inputstatus type="text" placeholder="Enter the Status.." class="form-control">
+                </div>
+               
+                    
+                    <div class="form-group">
+                        <label for="" >Created By :: </label>
+                        <input #crby type="text" placeholder="Created By.." class="form-control">
+                    </div>
+                   
+                    <div class="form-group" >
+                        <label for="">Updated By :: </label>
+                        <input #upby type="text" placeholder="Updated By.." class="form-control">
+                    </div>
+       
+                    <div class="form-group">
+                        <label for="">Country ::</label>
+                        <select [(ngModel)]="selectValue" name="allcountry" (change)="changeCountry()" class="form-control" >
+                            <option  [ngValue]="undefined" disabled>Select Country </option>
+                            <option *ngFor="let item of allcountry" [ngValue]="item">{{item.cname}} </option> 
+    
+                        </select> 
+                      </div>
+                      <hr>
+                  
+           
+            <button class="btn btn-success" 
+            style="width: 100%;" (click)="onAddEmpData(inputname.value,inputcontact.value,
+            inputdepartment.value,inputstatus.value,crby.value,upby.value)">Submit</button>
+        </form>
+    </div> 
+</div>
+-->
+
+
+<!-- For validation  -->
+<div class="center"> 
+    <div class="col-sm-6 col-md-6 col-lg-6">
+<form #f=ngForm (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+        <label for="">Employee Name</label>
+        <input  type="text" placeholder="Enter the Username.." 
+        #empname="ngModel" ngModel name="name"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empname.touched && !empname.valid">
+        **Please Enter The Employee Name
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="">Contact</label>
+        <input  type="number" placeholder="Enter the Mobile No.." 
+        #empphone="ngModel" ngModel name="phoneno"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empphone.touched && !empphone.valid">
+        **Please Enter The Mobile No.
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="">Department</label>
+        <input  type="text" placeholder="Enter the Department.." 
+        #empdept="ngModel" ngModel name="department"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empdept.touched && !empdept.valid">
+        **Please Enter The Department
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="">Status</label>
+        <input  type="text" placeholder="Enter the Status.." 
+        #empstatus="ngModel" ngModel name="status"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empstatus.touched && !empstatus.valid">
+        **Please Enter The Status
+    </div>
+    </div>
+      <!--
+    <div class="form-group">
+        <label for="">Created By </label>
+        <input  type="text" placeholder="Enter the Created By .." 
+        #empcrby="ngModel" ngModel name="createdby"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empcrby.touched && !empcrby.valid">
+        **Please Enter The Created By 
+    </div>
+    </div>
+   <div class="form-group">
+        <label for="">Updated By</label>
+        <input  type="text" placeholder="Enter the Updated By.." 
+        #empupby="ngModel" ngModel name="updatedby"    
+        class="form-control"
+        required
+        >
+
+        <div class="alert alert-danger"
+        *ngIf="empupby.touched && !empupby.valid">
+        **Please Enter The Updated By
+    </div>
+    </div> -->
+    <div class="form-group">
+        <label for="">Country </label>
+        <select ngModel name="country1"  id="" class="form-control" >
+            <option  [ngValue]="undefined" disabled>Select Country </option>
+            <option *ngFor="let item of allcountry" [ngValue]="item">{{item.cname}} </option> 
+
+        </select> 
+      </div>
+      <hr>
+      <button class="btn btn-success form-control" [disabled]=!f.valid>Submit</button>
+
+</form>
+    </div>
+    </div>
+</div>
